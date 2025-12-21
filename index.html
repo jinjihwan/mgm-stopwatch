@@ -8,223 +8,297 @@
   <style>
     :root { color-scheme: dark; }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", Arial, sans-serif;
-      background: #0b0f19;
-      color: #f9fafb;
+      background:#0b0f19;
+      color:#f9fafb;
     }
 
-    .card {
-      width: min(720px, 94vw);
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+    .card{
+      width:min(720px, 94vw);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 20px;
-      padding: 22px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+      padding: 20px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
       backdrop-filter: blur(10px);
     }
 
-    .top {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 18px;
-      color: #f9fafb;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.06);
-      color: #d1d5db;
-      font-size: 12px;
-      white-space: nowrap;
-    }
-
-    .time {
-      font-variant-numeric: tabular-nums;
-      font-size: 56px;
-      letter-spacing: 1px;
-      text-align: center;
-      margin: 14px 0 8px;
-      color: #ffffff;
-      text-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
-    }
-
-    .sub {
-      text-align: center;
-      font-size: 13px;
-      margin-bottom: 14px;
-      color: #d1d5db;
-    }
-
-    .row {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
       margin-bottom: 12px;
     }
 
-    button {
-      padding: 12px 18px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(255, 255, 255, 0.08);
-      color: #ffffff;
-      cursor: pointer;
-      font-size: 14px;
+    h1{
+      margin:0;
+      font-size: 18px;
+      color:#f9fafb;
+      font-weight: 700;
+      letter-spacing: 0.2px;
     }
 
-    button.primary {
-      background: rgba(34, 197, 94, 0.25);
-      border-color: rgba(34, 197, 94, 0.45);
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color:#d1d5db;
+      font-size:12px;
+      white-space:nowrap;
     }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 10px;
+    /* 탭 */
+    .tabs{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin: 8px 0 12px;
+    }
+    .tab{
+      padding:10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color:#e5e7eb;
+      cursor:pointer;
+      font-size: 13px;
+      user-select:none;
+    }
+    .tab.active{
+      background: rgba(99,102,241,0.25);
+      border-color: rgba(99,102,241,0.5);
+      color:#ffffff;
     }
 
-    .stat {
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(0,0,0,0.18);
-      border-radius: 16px;
-      padding: 12px;
+    /* 메인 타이머 */
+    .time{
+      font-variant-numeric: tabular-nums;
+      font-size: 56px;
+      letter-spacing: 1px;
+      text-align:center;
+      margin: 16px 0 8px;
+      color:#ffffff;
+      text-shadow: 0 0 12px rgba(255,255,255,0.15);
     }
 
-    .stat .label {
-      color: #9ca3af;
-      font-size: 12px;
+    .sub{
+      text-align:center;
+      font-size: 13px;
+      margin-bottom: 14px;
+      color:#d1d5db;
+    }
+
+    .row{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
       margin-bottom: 6px;
     }
 
-    .stat .value {
-      font-variant-numeric: tabular-nums;
-      font-size: 18px;
-      color: #ffffff;
+    button{
+      padding: 12px 18px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+      color:#ffffff;
+      cursor:pointer;
+      font-size: 14px;
+    }
+    button.primary{
+      background: rgba(34,197,94,0.25);
+      border-color: rgba(34,197,94,0.45);
     }
 
-    .lists {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+    .hint{
+      margin-top: 12px;
+      text-align:center;
+      font-size: 13px;
+      color:#9ca3af;
+    }
+    code{ color:#e5e7eb; }
+
+    /* 패널 (일별/월별) */
+    .panel{
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.18);
+      border-radius: 16px;
+      padding: 12px;
       margin-top: 10px;
     }
 
-    .panel {
-      border: 1px solid rgba(255,255,255,0.12);
+    .panelHeader{
+      display:flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+
+    .panelTitle{
+      margin:0;
+      font-size: 13px;
+      color:#e5e7eb;
+      font-weight: 700;
+    }
+
+    .panelSub{
+      color:#9ca3af;
+      font-size: 12px;
+    }
+
+    .item{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-variant-numeric: tabular-nums;
+    }
+    .item:first-of-type{ border-top:none; }
+    .k{ color:#d1d5db; font-size: 13px; }
+    .v{ color:#ffffff; font-size: 13px; }
+
+    /* 요약 카드(일별/월별 상단) */
+    .summaryGrid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:10px;
+      margin-top: 10px;
+    }
+    .stat{
+      border:1px solid rgba(255,255,255,0.12);
       background: rgba(0,0,0,0.18);
       border-radius: 16px;
       padding: 12px;
     }
-
-    .panel h2 {
-      margin: 0 0 8px;
-      font-size: 13px;
-      color: #e5e7eb;
-      font-weight: 600;
-    }
-
-    .item {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 8px 0;
-      border-top: 1px solid rgba(255,255,255,0.08);
+    .label{ color:#9ca3af; font-size: 12px; margin-bottom: 6px; }
+    .value{
       font-variant-numeric: tabular-nums;
-    }
-    .item:first-of-type { border-top: none; }
-
-    .item .k { color: #d1d5db; font-size: 13px; }
-    .item .v { color: #ffffff; font-size: 13px; }
-
-    .hint {
-      margin-top: 12px;
-      text-align: center;
-      font-size: 13px;
-      color: #9ca3af;
+      font-size: 18px;
+      color:#ffffff;
     }
 
-    code { color: #e5e7eb; }
-
-    @media (max-width: 640px) {
-      .stats, .lists { grid-template-columns: 1fr; }
-      .time { font-size: 50px; }
+    @media (max-width: 640px){
+      .summaryGrid{ grid-template-columns: 1fr; }
+      .time{ font-size: 50px; }
     }
+
+    /* 섹션 표시/숨김 */
+    .hidden{ display:none !important; }
   </style>
 </head>
 
 <body>
   <div class="card">
     <div class="top">
-      <h1>공부 스톱워치 (누적 + 일/월 기록)</h1>
-      <div id="autoSavePill" class="pill">자동 저장됨</div>
+      <h1>공부 스톱워치</h1>
+      <div class="pill" id="autoSavePill">자동 저장됨</div>
     </div>
 
-    <div id="display" class="time">00:00:00</div>
-    <div id="status" class="sub">정지됨 · 자동 저장됨</div>
-
-    <div class="row">
-      <button id="startPause" class="primary">시작</button>
+    <div class="tabs" role="tablist" aria-label="탭">
+      <div class="tab active" id="tabTimer" role="tab" aria-selected="true" tabindex="0">타이머</div>
+      <div class="tab" id="tabDaily" role="tab" aria-selected="false" tabindex="0">일별</div>
+      <div class="tab" id="tabMonthly" role="tab" aria-selected="false" tabindex="0">월별</div>
     </div>
 
-    <div class="stats">
-      <div class="stat">
-        <div class="label">오늘 누적</div>
-        <div id="todayTotal" class="value">00:00:00</div>
+    <!-- ===== 타이머 탭 ===== -->
+    <section id="sectionTimer">
+      <div id="display" class="time">00:00:00</div>
+      <div id="status" class="sub">정지됨 · 자동 저장됨</div>
+
+      <div class="row">
+        <button id="startPause" class="primary">시작</button>
       </div>
-      <div class="stat">
-        <div class="label">이번 달 누적</div>
-        <div id="monthTotal" class="value">00:00:00</div>
-      </div>
-    </div>
 
-    <div class="lists">
+      <div class="hint">
+        단축키: <code>Space</code> 시작/일시정지 · 초기화 기능 없음
+      </div>
+    </section>
+
+    <!-- ===== 일별 탭 ===== -->
+    <section id="sectionDaily" class="hidden" aria-hidden="true">
+      <div class="summaryGrid">
+        <div class="stat">
+          <div class="label">오늘 누적</div>
+          <div id="todayTotal" class="value">00:00:00</div>
+        </div>
+        <div class="stat">
+          <div class="label">최근 7일 합</div>
+          <div id="last7Total" class="value">00:00:00</div>
+        </div>
+      </div>
+
       <div class="panel">
-        <h2>최근 7일</h2>
+        <div class="panelHeader">
+          <h2 class="panelTitle">최근 14일</h2>
+          <div class="panelSub">로컬 저장 · 기기/브라우저별</div>
+        </div>
         <div id="dailyList"></div>
       </div>
+    </section>
+
+    <!-- ===== 월별 탭 ===== -->
+    <section id="sectionMonthly" class="hidden" aria-hidden="true">
+      <div class="summaryGrid">
+        <div class="stat">
+          <div class="label">이번 달 누적</div>
+          <div id="monthTotal" class="value">00:00:00</div>
+        </div>
+        <div class="stat">
+          <div class="label">최근 6개월 합</div>
+          <div id="last6Total" class="value">00:00:00</div>
+        </div>
+      </div>
+
       <div class="panel">
-        <h2>최근 6개월</h2>
+        <div class="panelHeader">
+          <h2 class="panelTitle">최근 12개월</h2>
+          <div class="panelSub">로컬 저장 · 기기/브라우저별</div>
+        </div>
         <div id="monthlyList"></div>
       </div>
-    </div>
-
-    <div class="hint">
-      단축키: <code>Space</code> 시작/일시정지 · 초기화 기능 없음
-    </div>
+    </section>
   </div>
 
   <script>
+    // ===== DOM =====
     const $ = (id) => document.getElementById(id);
+
+    const tabTimer = $("tabTimer");
+    const tabDaily = $("tabDaily");
+    const tabMonthly = $("tabMonthly");
+
+    const sectionTimer = $("sectionTimer");
+    const sectionDaily = $("sectionDaily");
+    const sectionMonthly = $("sectionMonthly");
 
     const display = $("display");
     const statusEl = $("status");
     const startPauseBtn = $("startPause");
+
     const todayTotalEl = $("todayTotal");
+    const last7TotalEl = $("last7Total");
     const monthTotalEl = $("monthTotal");
+    const last6TotalEl = $("last6Total");
+
     const dailyListEl = $("dailyList");
     const monthlyListEl = $("monthlyList");
 
-    const STORAGE_KEY = "study_stopwatch_v2";
+    // ===== Storage =====
+    const STORAGE_KEY = "study_stopwatch_tabs_v1";
 
     // 전체 누적(ms)
     let accumulatedMs = 0;
@@ -232,13 +306,13 @@
     // 실행 상태
     let running = false;
 
-    // "실행 시작" 기준(밀리초 epoch)
+    // 실행 시작 epoch(ms)
     let startEpochMs = null;
 
-    // 기록 분배를 위한 마지막 업데이트 시점(epoch ms)
+    // 분배 기준 마지막 업데이트 epoch(ms)
     let lastUpdateEpochMs = null;
 
-    // 일/월 기록
+    // 기록
     // daily: { "YYYY-MM-DD": ms }
     // monthly: { "YYYY-MM": ms }
     let daily = {};
@@ -247,22 +321,17 @@
     // 렌더 타이머
     let tickId = null;
 
-    // ===== 날짜 키 유틸 (로컬 기준) =====
-    function pad2(n) { return String(n).padStart(2, "0"); }
+    // ===== 날짜 유틸 (로컬 기준) =====
+    const pad2 = (n) => String(n).padStart(2, "0");
 
     function keyDayFromEpoch(epochMs) {
       const d = new Date(epochMs);
-      const y = d.getFullYear();
-      const m = pad2(d.getMonth() + 1);
-      const da = pad2(d.getDate());
-      return `${y}-${m}-${da}`;
+      return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
     }
 
     function keyMonthFromEpoch(epochMs) {
       const d = new Date(epochMs);
-      const y = d.getFullYear();
-      const m = pad2(d.getMonth() + 1);
-      return `${y}-${m}`;
+      return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}`;
     }
 
     function startOfNextDayEpoch(epochMs) {
@@ -280,16 +349,9 @@
       return `${String(h).padStart(2,"0")}:${String(mi).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
     }
 
-    // ===== 저장/로드 =====
+    // ===== Save/Load =====
     function save() {
-      const data = {
-        accumulatedMs,
-        running,
-        startEpochMs,
-        lastUpdateEpochMs,
-        daily,
-        monthly
-      };
+      const data = { accumulatedMs, running, startEpochMs, lastUpdateEpochMs, daily, monthly };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     }
 
@@ -306,12 +368,10 @@
 
         if (data.daily && typeof data.daily === "object") daily = data.daily;
         if (data.monthly && typeof data.monthly === "object") monthly = data.monthly;
-      } catch {
-        // 무시
-      }
+      } catch { /* ignore */ }
     }
 
-    // ===== 시간 분배 로직 (자정 넘어도 정확히 기록) =====
+    // ===== 기록 분배 (자정 넘어도 정확히) =====
     function addMsToMaps(dayKey, monthKey, ms) {
       if (ms <= 0) return;
       daily[dayKey] = (daily[dayKey] || 0) + ms;
@@ -319,7 +379,6 @@
     }
 
     function distributeInterval(startMs, endMs) {
-      // [startMs, endMs) 구간의 시간을 날짜 경계(자정) 기준으로 쪼개서 daily/monthly에 더함
       let cur = startMs;
       while (cur < endMs) {
         const dayKey = keyDayFromEpoch(cur);
@@ -331,8 +390,7 @@
       }
     }
 
-    // 실행 중이면 "지난 업데이트 이후" 경과를 누적 및 기록에 반영
-    function applyDeltaToTotalsAndRecords() {
+    function applyDelta() {
       if (!running) return;
       const now = Date.now();
       if (!lastUpdateEpochMs) lastUpdateEpochMs = now;
@@ -349,47 +407,95 @@
       save();
     }
 
-    // ===== 현재 누적(ms) =====
-    function currentMs() {
-      // 실시간 표시를 위해 "applyDelta..."를 이미 반영했다고 가정하고 accumulatedMs를 쓰는 방식
-      // (렌더 루프에서 applyDeltaToTotalsAndRecords() 호출)
-      return accumulatedMs;
+    // ===== UI: 탭 =====
+    function setActiveTab(which) {
+      const tabs = [
+        { tab: tabTimer, section: sectionTimer, key: "timer" },
+        { tab: tabDaily, section: sectionDaily, key: "daily" },
+        { tab: tabMonthly, section: sectionMonthly, key: "monthly" }
+      ];
+
+      for (const t of tabs) {
+        const active = t.key === which;
+        t.tab.classList.toggle("active", active);
+        t.tab.setAttribute("aria-selected", active ? "true" : "false");
+        t.section.classList.toggle("hidden", !active);
+        t.section.setAttribute("aria-hidden", active ? "false" : "true");
+      }
+
+      // 탭 전환 시 최신 수치 반영
+      if (running) applyDelta();
+      renderAll();
     }
 
-    // ===== UI 렌더 =====
-    function renderLists() {
-      // 오늘/이번달 키
+    tabTimer.addEventListener("click", () => setActiveTab("timer"));
+    tabDaily.addEventListener("click", () => setActiveTab("daily"));
+    tabMonthly.addEventListener("click", () => setActiveTab("monthly"));
+
+    // 키보드로 탭 이동(선택)
+    [tabTimer, tabDaily, tabMonthly].forEach((el) => {
+      el.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          el.click();
+        }
+      });
+    });
+
+    // ===== UI: 리스트 렌더 =====
+    function sumMs(values) {
+      let s = 0;
+      for (const v of values) s += v || 0;
+      return s;
+    }
+
+    function renderDaily() {
       const now = Date.now();
       const todayKey = keyDayFromEpoch(now);
-      const monthKey = keyMonthFromEpoch(now);
 
       const todayMs = daily[todayKey] || 0;
-      const monthMs = monthly[monthKey] || 0;
-
       todayTotalEl.textContent = formatHMS(todayMs);
-      monthTotalEl.textContent = formatHMS(monthMs);
 
-      // 최근 7일 (오늘 포함)
-      const dailyItems = [];
+      // 최근 7일 합 (오늘 포함)
+      const last7 = [];
       {
         const d = new Date();
         d.setHours(0,0,0,0);
         for (let i = 0; i < 7; i++) {
           const dayEpoch = d.getTime() - i * 24 * 60 * 60 * 1000;
           const k = keyDayFromEpoch(dayEpoch);
-          dailyItems.push([k, daily[k] || 0]);
+          last7.push(daily[k] || 0);
         }
       }
-      dailyListEl.innerHTML = dailyItems
-        .map(([k, ms]) => {
-          // 표시를 YYYY-MM-DD → MM/DD로 가볍게
-          const mmdd = k.slice(5).replace("-", "/");
-          return `<div class="item"><div class="k">${mmdd}</div><div class="v">${formatHMS(ms)}</div></div>`;
-        })
-        .join("");
+      last7TotalEl.textContent = formatHMS(sumMs(last7));
 
-      // 최근 6개월 (이번달 포함)
-      const monthlyItems = [];
+      // 최근 14일 리스트
+      const items = [];
+      {
+        const d = new Date();
+        d.setHours(0,0,0,0);
+        for (let i = 0; i < 14; i++) {
+          const dayEpoch = d.getTime() - i * 24 * 60 * 60 * 1000;
+          const k = keyDayFromEpoch(dayEpoch);
+          items.push([k, daily[k] || 0]);
+        }
+      }
+
+      dailyListEl.innerHTML = items.map(([k, ms]) => {
+        const mmdd = k.slice(5).replace("-", "/");
+        return `<div class="item"><div class="k">${mmdd}</div><div class="v">${formatHMS(ms)}</div></div>`;
+      }).join("");
+    }
+
+    function renderMonthly() {
+      const now = Date.now();
+      const monthKey = keyMonthFromEpoch(now);
+
+      const monthMs = monthly[monthKey] || 0;
+      monthTotalEl.textContent = formatHMS(monthMs);
+
+      // 최근 6개월 합 (이번달 포함)
+      const last6 = [];
       {
         const d = new Date();
         d.setDate(1);
@@ -397,24 +503,41 @@
         for (let i = 0; i < 6; i++) {
           const md = new Date(d.getFullYear(), d.getMonth() - i, 1, 0, 0, 0, 0);
           const k = keyMonthFromEpoch(md.getTime());
-          monthlyItems.push([k, monthly[k] || 0]);
+          last6.push(monthly[k] || 0);
         }
       }
-      monthlyListEl.innerHTML = monthlyItems
-        .map(([k, ms]) => {
-          // YYYY-MM → YYYY.MM
-          const label = k.replace("-", ".");
-          return `<div class="item"><div class="k">${label}</div><div class="v">${formatHMS(ms)}</div></div>`;
-        })
-        .join("");
+      last6TotalEl.textContent = formatHMS(sumMs(last6));
+
+      // 최근 12개월 리스트
+      const items = [];
+      {
+        const d = new Date();
+        d.setDate(1);
+        d.setHours(0,0,0,0);
+        for (let i = 0; i < 12; i++) {
+          const md = new Date(d.getFullYear(), d.getMonth() - i, 1, 0, 0, 0, 0);
+          const k = keyMonthFromEpoch(md.getTime());
+          items.push([k, monthly[k] || 0]);
+        }
+      }
+
+      monthlyListEl.innerHTML = items.map(([k, ms]) => {
+        const label = k.replace("-", ".");
+        return `<div class="item"><div class="k">${label}</div><div class="v">${formatHMS(ms)}</div></div>`;
+      }).join("");
     }
 
-    function render() {
-      display.textContent = formatHMS(currentMs());
-      document.title = running ? `⏱️ ${formatHMS(currentMs())}` : `공부 스톱워치 - ${formatHMS(currentMs())}`;
+    function renderTimer() {
+      display.textContent = formatHMS(accumulatedMs);
+      document.title = running ? `⏱️ ${formatHMS(accumulatedMs)}` : `공부 스톱워치 - ${formatHMS(accumulatedMs)}`;
       statusEl.textContent = (running ? "측정 중" : "정지됨") + " · 자동 저장됨";
       startPauseBtn.textContent = running ? "일시정지" : "시작";
-      renderLists();
+    }
+
+    function renderAll() {
+      renderTimer();
+      renderDaily();
+      renderMonthly();
     }
 
     // ===== 동작 제어 =====
@@ -423,20 +546,22 @@
       running = true;
       const now = Date.now();
       startEpochMs = now;
-      lastUpdateEpochMs = now; // 분배 기준 시작
+      lastUpdateEpochMs = now;
       save();
+
       if (tickId) clearInterval(tickId);
       tickId = setInterval(() => {
-        applyDeltaToTotalsAndRecords();
-        render();
+        applyDelta();
+        // 타이머는 항상 부드럽게 업데이트, 다른 탭도 숫자는 유지되게 같이 갱신
+        renderAll();
       }, 250);
-      render();
+
+      renderAll();
     }
 
     function pause() {
       if (!running) return;
-      // 멈추기 직전까지 반영
-      applyDeltaToTotalsAndRecords();
+      applyDelta();
 
       running = false;
       startEpochMs = null;
@@ -445,14 +570,14 @@
 
       if (tickId) clearInterval(tickId);
       tickId = null;
-      render();
+
+      renderAll();
     }
 
     function toggle() {
       running ? pause() : start();
     }
 
-    // ===== 이벤트 =====
     startPauseBtn.addEventListener("click", toggle);
 
     window.addEventListener("keydown", (e) => {
@@ -463,34 +588,38 @@
     });
 
     window.addEventListener("beforeunload", () => {
-      // 닫히기 직전 실행 중이면 마지막 반영 후 저장
-      if (running) applyDeltaToTotalsAndRecords();
+      if (running) applyDelta();
       save();
     });
 
-    // ===== 초기화(로드) 처리 =====
+    // ===== 초기 로드 및 "꺼져있던 동안" 반영 =====
     load();
 
-    // 만약 실행 중 상태로 저장되어 있었다면, "꺼져있던 동안" 경과도 반영해야 함
+    // 저장 당시 running이었다면, lastUpdateEpochMs(or startEpochMs)부터 지금까지 시간을 분배해서 반영
     if (running && typeof startEpochMs === "number") {
-      // lastUpdateEpochMs가 있으면 그 시점부터 now까지 분배
       const now = Date.now();
-      const startForCatchup = (typeof lastUpdateEpochMs === "number") ? lastUpdateEpochMs : startEpochMs;
-      distributeInterval(startForCatchup, now);
-      accumulatedMs += Math.max(0, now - startForCatchup);
+      const startForCatchup =
+        (typeof lastUpdateEpochMs === "number" && lastUpdateEpochMs) ? lastUpdateEpochMs : startEpochMs;
 
-      // 계속 실행 상태 유지
+      if (now > startForCatchup) {
+        distributeInterval(startForCatchup, now);
+        accumulatedMs += (now - startForCatchup);
+      }
+
+      // 계속 실행
       lastUpdateEpochMs = now;
       startEpochMs = now;
       save();
 
       tickId = setInterval(() => {
-        applyDeltaToTotalsAndRecords();
-        render();
+        applyDelta();
+        renderAll();
       }, 250);
     }
 
-    render();
+    // 최초 렌더
+    renderAll();
+    setActiveTab("timer");
   </script>
 </body>
 </html>
